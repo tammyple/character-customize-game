@@ -21,7 +21,7 @@ body {
 .App {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   align-items: center;
   margin: 0 auto;
@@ -57,13 +57,17 @@ body {
   .avatar-group {
     align-items: center;
     flex-direction: column;
+    align-items: center;
   }
 }
 
 .avatar-group {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin: 5vw;
 }
 
 .gap-30 {
@@ -81,6 +85,8 @@ body {
   border: 15px solid #0baf94;
   border-radius: 40px;
   display: inline-block;
+  position: -webkit-sticky;
+  position: sticky;
   padding: 20px;
   top: calc(50% - 205px);
 }
@@ -111,12 +117,20 @@ body {
   text-transform: uppercase;
 }
 
+.list-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .list-section {
   max-width: 700px;
   text-align: center;
+  margin: 5vw;
+  display: inline-block;
 }
 
-h2 {
+.list-section h2 {
   font-size: 30px;
   color: #a5510d;
 }
@@ -154,6 +168,10 @@ h2 {
 
 .clickable {
   cursor: pointer;
+}
+
+.selected {
+  background-color: rgba(116, 116, 255, 0.315);
 }
 
 .img-center {

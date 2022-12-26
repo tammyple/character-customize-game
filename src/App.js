@@ -2,29 +2,33 @@ import React, { useState } from "react";
 import "./App.css";
 import Avatar from "./components/Avatar";
 import PartList from "./components/PartList";
-import character from "./";
-
-const total = {
-  body: 17,
-  eyes: 17,
-  hair: 73,
-  mouth: 24,
-  eyebrows: 15,
-  hat: 28,
-  glasses: 17,
-  clothing1: 5,
-  clothing2: 5,
-  clothing3: 9,
-};
-
-const hangleClick = (element) => {
-  element.classList.add("selected");
-  console.log("click");
-};
 
 function App() {
-  const [character, setCharacter] = useState(null);
-  const [accessories, setAccessories] = useState(null);
+  const [avatar, setAvatar] = useState(null);
+  const [squares, setSquares] = useState(null);
+
+  const total = {
+    body: 17,
+    eyes: 17,
+    hair: 73,
+    mouth: 24,
+    eyebrows: 15,
+    hats: 28,
+    glasses: 17,
+    earrings: 32,
+    layer_1: 5,
+    layer_2: 5,
+    layer_3: 9,
+  };
+
+  const handleClick = (e) => {
+    e.target.classList.add("selected");
+    console.log("e.target", e.target);
+    // const newSquare = (itemKey) => {
+    //   setSquares(squares.filter((item) => item.key === itemKey));
+    // };
+    // setAvatar(newSquare);
+  };
 
   return (
     <>
@@ -36,7 +40,7 @@ function App() {
         </div>
         <div className="avatar-group">
           <Avatar total={total} />
-          <PartList total={total} />
+          <PartList total={total} handleClick={handleClick} />
         </div>
       </div>
     </>

@@ -9,32 +9,35 @@ import React from "react";
 // );
 // console.log(bodyImages);
 
-function PartList({ total }) {
+function PartList({ total, handleClick }) {
   const keys = Object.keys(total);
-
+  let imagePath = "";
   return (
     <>
-      <div>
+      <div className="list-wrapper">
         {keys.map((item) => {
-          const imagePath = `./character/${item}/`;
           const imagesArray = [...Array(total[`${item}`] + 1).keys()].slice(1);
-          console.log("item", item);
+          if (item === "glasses" || item === "hats" || item === "earrings") {
+            imagePath = `./character/accessories/${item}/`;
+          }
+          if (item === "layer_1" || item === "layer_2" || item === "layer_3") {
+            imagePath = `./character/clothes/${item}/`;
+          } else {
+            imagePath = `./character/${item}/`;
+          }
           return (
             <div key={item} className="list-section">
               <h2>{item}</h2>
               <div className="list">
                 {imagesArray.map((image) => {
                   return (
-                    <div key={`${item}-${image}`} className="square">
+                    <div
+                      key={`${item}-${image}`}
+                      className="clickable square"
+                      onClick={handleClick}
+                    >
                       <img
                         src={`${imagePath}${image}.png`}
-                        alt=""
-                        height="60"
-                        className="img-center"
-                        style={{ top: "50%" }}
-                      />
-                      <img
-                        src={`./character/body/1.png`}
                         alt=""
                         height="60"
                         className="img-center"
