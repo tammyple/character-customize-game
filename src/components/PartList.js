@@ -9,7 +9,14 @@ import React, { useState } from "react";
 // );
 // console.log(bodyImages);
 
-function PartList({ isSelected, total, handleClick, square }) {
+function PartList({
+  isSelected,
+  activeSquare,
+  setActiveSquare,
+  total,
+  handleClick,
+  element,
+}) {
   const keys = Object.keys(total);
   let imagePath = "";
   return (
@@ -33,17 +40,19 @@ function PartList({ isSelected, total, handleClick, square }) {
                   return (
                     <div
                       key={`${item}-${image}`}
-                      className={
-                        "clickable square" + (isSelected ? "selected" : "")
-                      }
+                      className={`clickable square ${
+                        activeSquare === element ? "" : "selected"
+                      }`}
                       onClick={handleClick}
                     >
                       <img
+                        id={`${item}-${image}`}
                         src={`${imagePath}${image}.png`}
                         alt=""
                         height="60"
                         className="img-center"
                         style={{ top: "50%" }}
+                        onSelect={() => setActiveSquare(element)}
                       />
                     </div>
                   );

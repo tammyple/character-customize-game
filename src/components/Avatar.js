@@ -7,7 +7,7 @@ function Avatar({ avatar, squares }) {
         <div className="avatar-wrapper">
           <div className="avatar">
             <img
-              src={squares}
+              src={avatar}
               alt=""
               width="260"
               style={{
@@ -17,7 +17,7 @@ function Avatar({ avatar, squares }) {
                 top: "0px",
               }}
             />
-            <img
+            {/* <img
               src="character/eyes/9.png"
               alt=""
               width="260"
@@ -71,7 +71,7 @@ function Avatar({ avatar, squares }) {
                 left: "0px",
                 top: "0px",
               }}
-            />
+            /> */}
           </div>
           <div className="text-center">
             <button className="random-button">Randomize!</button>

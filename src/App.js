@@ -7,7 +7,7 @@ const total = {
   body: 17,
   eyes: 17,
   hair: 73,
-  mouth: 24,
+  mouths: 24,
   eyebrows: 15,
   hats: 28,
   glasses: 17,
@@ -24,16 +24,31 @@ function App() {
   const [activeSquare, setActiveSquare] = useState();
 
   const handleClick = (e) => {
-    setSquares(e.target.src);
-    newAvatar = avatar.filter((item) => item.src === squares);
-    setAvatar(newAvatar);
-    console.log("square", e.target.src);
-    activeSquare === squares ? setActiveSquare() : setActiveSquare(squares);
+    const newAvatar = e.target;
+    const newAvatarSrc = e.target.src;
+    setAvatar(newAvatarSrc);
+    setIsSelected(true);
+
+    // const selectedSquareId = e.target.id;
+    // const newActiveSquare = (itemId)
+    // activeSquare.id === selectedSquareId ? "" : "selected";
+    // setActiveSquare(newActiveSquare);
+
+    // console.log("selectedSquare", selectedSquareId);
+    // console.log("newAvatar", newAvatar);
+    // console.log("activeSquare", activeSquare);
+    // console.log("newActiveSquare", newActiveSquare);
   };
 
-  const handleSelect = () => {
-    setIsSelected(true);
-  };
+  // const handleSelect = (e) => {
+  //   const selectedSquareId = e.target.id;
+  //   console.log("selectedSquare", selectedSquareId);
+  //   setSquares(squares === selectedSquareId ? "" : "selected");
+  // };
+
+  // const handleRemoveSelect = (squareKey) => {
+  //   setSquares(squares.filter((square) => square.key !== squareKey));
+  // };
 
   return (
     <>
