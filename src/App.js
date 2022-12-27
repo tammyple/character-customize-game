@@ -3,31 +3,36 @@ import "./App.css";
 import Avatar from "./components/Avatar";
 import PartList from "./components/PartList";
 
+const total = {
+  body: 17,
+  eyes: 17,
+  hair: 73,
+  mouth: 24,
+  eyebrows: 15,
+  hats: 28,
+  glasses: 17,
+  earrings: 32,
+  layer_1: 5,
+  layer_2: 5,
+  layer_3: 9,
+};
+
 function App() {
   const [avatar, setAvatar] = useState(null);
   const [squares, setSquares] = useState(null);
-
-  const total = {
-    body: 17,
-    eyes: 17,
-    hair: 73,
-    mouth: 24,
-    eyebrows: 15,
-    hats: 28,
-    glasses: 17,
-    earrings: 32,
-    layer_1: 5,
-    layer_2: 5,
-    layer_3: 9,
-  };
+  const [isSelected, setIsSelected] = useState(false);
+  const [activeSquare, setActiveSquare] = useState();
 
   const handleClick = (e) => {
-    e.target.classList.add("selected");
-    console.log("e.target", e.target);
-    // const newSquare = (itemKey) => {
-    //   setSquares(squares.filter((item) => item.key === itemKey));
-    // };
-    // setAvatar(newSquare);
+    setSquares(e.target.src);
+    newAvatar = avatar.filter((item) => item.src === squares);
+    setAvatar(newAvatar);
+    console.log("square", e.target.src);
+    activeSquare === squares ? setActiveSquare() : setActiveSquare(squares);
+  };
+
+  const handleSelect = () => {
+    setIsSelected(true);
   };
 
   return (
@@ -39,8 +44,12 @@ function App() {
           <div className="divider"></div>
         </div>
         <div className="avatar-group">
-          <Avatar total={total} />
-          <PartList total={total} handleClick={handleClick} />
+          <Avatar total={total} avatar={avatar} squares={squares} />
+          <PartList
+            total={total}
+            handleClick={handleClick}
+            isSelected={isSelected}
+          />
         </div>
       </div>
     </>

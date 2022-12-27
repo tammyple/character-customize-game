@@ -1,13 +1,13 @@
 import React from "react";
 
-function Avatar(total) {
+function Avatar({ avatar, squares }) {
   return (
     <>
       <div>
         <div className="avatar-wrapper">
           <div className="avatar">
             <img
-              src="character/body/2.png"
+              src={squares}
               alt=""
               width="260"
               style={{

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // function importAll(r) {
 //   return r.keys().map(r);
@@ -9,7 +9,7 @@ import React from "react";
 // );
 // console.log(bodyImages);
 
-function PartList({ total, handleClick }) {
+function PartList({ isSelected, total, handleClick, square }) {
   const keys = Object.keys(total);
   let imagePath = "";
   return (
@@ -33,7 +33,9 @@ function PartList({ total, handleClick }) {
                   return (
                     <div
                       key={`${item}-${image}`}
-                      className="clickable square"
+                      className={
+                        "clickable square" + (isSelected ? "selected" : "")
+                      }
                       onClick={handleClick}
                     >
                       <img
