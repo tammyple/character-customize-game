@@ -33,8 +33,8 @@ function App() {
     layer_2: 5,
     layer_3: 9,
   });
-
   const [selected, setSelected] = useState(null);
+
   const handleSelected = (item) => {
     setSelected(item);
   };
@@ -44,33 +44,33 @@ function App() {
     setAvatar({ ...avatar, [e.target.name]: value });
   };
 
-  const handleRandom = () => {
-    let updatedValue = "";
-    const keys = Object.entries(total);
-    console.log("keys", keys[0][1]);
-    keys.forEach((item) => {
-      const avaValue = item[1];
-      console.log("avaValue", avaValue);
-      const randomNum = Math.floor(Math.random() * avaValue) + 1;
-      updatedValue = { [item[0]]: randomNum };
-      console.log("updatedValue", updatedValue);
-      console.log("randomNum", randomNum);
-      setAvatar({ ...avatar, ...updatedValue });
-      console.log("avatar", avatar);
-      return avatar;
-    });
-  };
-
   // const handleRandom = () => {
-  //   const keys = Object.keys(avatar);
+  //   let updatedValue = "";
+  //   const keys = Object.entries(total);
   //   keys.forEach((item) => {
-  //     const avaValue = avatar[`${item}`];
+  //     const avaValue = item[1];
   //     const randomNum = Math.floor(Math.random() * avaValue) + 1;
-  //     setAvatar({ ...avatar, [item]: randomNum });
-  //     console.log("avatar", avatar);
-  //     return avatar;
+  //     updatedValue = { [item[0]]: randomNum };
   //   });
+  //   setAvatar({ ...avatar, ...updatedValue });
+  //   console.log("avatar", avatar);
+  //   return avatar;
   // };
+
+  const handleRandom = () => {
+    const keys = Object.keys(avatar);
+    let updatedValue = {};
+    keys.forEach((item) => {
+      const avaValue = avatar[`${item}`];
+      const randomNum = Math.floor(Math.random() * avaValue) + 1;
+      console.log("randomNum", randomNum);
+      updatedValue = { ...updatedValue, [item]: randomNum };
+      console.log("updated Value", updatedValue);
+    });
+    setAvatar((prev) => ({ ...prev, ...updatedValue }));
+    console.log("avatar", avatar);
+    return avatar;
+  };
 
   return (
     <>
