@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Avatar from "./components/Avatar";
 import PartList from "./components/PartList";
@@ -44,33 +44,21 @@ function App() {
     setAvatar({ ...avatar, [e.target.name]: value });
   };
 
-  // const handleRandom = () => {
-  //   let updatedValue = "";
-  //   const keys = Object.entries(total);
-  //   keys.forEach((item) => {
-  //     const avaValue = item[1];
-  //     const randomNum = Math.floor(Math.random() * avaValue) + 1;
-  //     updatedValue = { [item[0]]: randomNum };
-  //   });
-  //   setAvatar({ ...avatar, ...updatedValue });
-  //   console.log("avatar", avatar);
-  //   return avatar;
-  // };
-
   const handleRandom = () => {
     const keys = Object.keys(avatar);
     let updatedValue = {};
     keys.forEach((item) => {
       const avaValue = avatar[`${item}`];
       const randomNum = Math.floor(Math.random() * avaValue) + 1;
-      console.log("randomNum", randomNum);
       updatedValue = { ...updatedValue, [item]: randomNum };
-      console.log("updated Value", updatedValue);
     });
     setAvatar((prev) => ({ ...prev, ...updatedValue }));
-    console.log("avatar", avatar);
     return avatar;
   };
+
+  useEffect(() => {
+    handleRandom();
+  }, []);
 
   return (
     <>
@@ -81,12 +69,7 @@ function App() {
           <div className="divider"></div>
         </div>
         <div className="avatar-group">
-          <Avatar
-            total={total}
-            avatar={avatar}
-            value={selected}
-            handleRandom={handleRandom}
-          />
+          <Avatar avatar={avatar} handleRandom={handleRandom} />
           <PartList
             total={total}
             avatar={avatar}

@@ -1,9 +1,10 @@
 import React from "react";
 
-function Avatar({ avatar, setAvatar, handleRandom }) {
+function Avatar({ avatar, handleRandom }) {
   const keys = Object.keys(avatar);
   let imagePath = "";
   let zIndex = "";
+  console.log("avatar", avatar);
 
   return (
     <>
