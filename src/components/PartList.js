@@ -1,14 +1,14 @@
 import React from "react";
 
 function PartList({ total, selected, setSelected, handleClick }) {
-  const keys = Object.keys(total);
+  const totalKeys = Object.keys(total);
   let imagePath = "";
   let itemName = "";
   const timestamp = Date.now();
   return (
     <>
-      <div className="list-wrapper">
-        {keys.map((item) => {
+      <div key={`${timestamp}`} className="list-wrapper">
+        {totalKeys.map((item, index) => {
           const imagesArray = [...Array(total[`${item}`] + 1).keys()].slice(1);
           switch (item) {
             case "glasses":
@@ -28,7 +28,7 @@ function PartList({ total, selected, setSelected, handleClick }) {
               itemName = `${item}`;
           }
           return (
-            <div key={`${item}-${timestamp}`} className="list-section">
+            <div key={`${item}-${index}-${timestamp}`} className="list-section">
               <h2>{`${itemName}`.toUpperCase()}</h2>
               <div className="list">
                 {imagesArray.map((image) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Avatar from "./components/Avatar";
 import PartList from "./components/PartList";
@@ -56,10 +56,6 @@ function App() {
     return avatar;
   };
 
-  useEffect(() => {
-    handleRandom();
-  }, []);
-
   return (
     <>
       <div className="App gap-30">
@@ -70,15 +66,17 @@ function App() {
         </div>
         <div className="avatar-group">
           <Avatar avatar={avatar} handleRandom={handleRandom} />
-          <PartList
-            total={total}
-            avatar={avatar}
-            selected={selected}
-            setSelected={setSelected}
-            setAvatar={setAvatar}
-            handleClick={handleClick}
-            handleSelected={handleSelected}
-          />
+          <div className="list-wrapper">
+            <PartList
+              total={total}
+              avatar={avatar}
+              selected={selected}
+              setSelected={setSelected}
+              setAvatar={setAvatar}
+              handleClick={handleClick}
+              handleSelected={handleSelected}
+            />
+          </div>
         </div>
       </div>
     </>

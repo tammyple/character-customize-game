@@ -4,6 +4,7 @@ function Avatar({ avatar, handleRandom }) {
   const keys = Object.keys(avatar);
   let imagePath = "";
   let zIndex = "";
+  const timestamp = Date.now();
 
   return (
     <>
@@ -48,7 +49,7 @@ function Avatar({ avatar, handleRandom }) {
               }
               return (
                 <img
-                  key={`${item}-${avaValue}`}
+                  key={`${item}-${timestamp}`}
                   src={`${imagePath}${avaValue}.png`}
                   alt=""
                   width="260"
