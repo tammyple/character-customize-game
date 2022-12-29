@@ -4,7 +4,6 @@ function Avatar({ avatar, handleRandom }) {
   const keys = Object.keys(avatar);
   let imagePath = "";
   let zIndex = "";
-  console.log("avatar", avatar);
 
   return (
     <>
