@@ -33,22 +33,25 @@ function App() {
     layer_2: 5,
     layer_3: 9,
   });
-  // const [squares, setSquares] = useState(null);
-  // const [isSelected, setIsSelected] = useState(false);
+
+  const [selected, setSelected] = useState(null);
+  const handleSelected = (item) => {
+    setSelected(item);
+  };
 
   const handleClick = (e) => {
     let value = e.target.getAttribute("data-value");
     setAvatar({ ...avatar, [e.target.name]: value });
   };
 
-  // const handleSelect = (e) => {
-  //   const selectedSquareId = e.target.id;
-  //   console.log("selectedSquare", selectedSquareId);
-  //   setSquares(squares === selectedSquareId ? "" : "selected");
-  // };
-
-  // const handleRemoveSelect = (squareKey) => {
-  //   setSquares(squares.filter((square) => square.key !== squareKey));
+  // const handleRandom = (avatar) => {
+  //   const keys = Object.keys(avatar);
+  //   keys.forEach((item) => {
+  //     const avaValue = avatar[`${item}`];
+  //     const randomNum = Math.floor(Math.random() * avaValue) + 1;
+  //     setAvatar({ ...avatar, [item]: randomNum });
+  //     console.log("item", item);
+  //   });
   // };
 
   return (
@@ -60,12 +63,15 @@ function App() {
           <div className="divider"></div>
         </div>
         <div className="avatar-group">
-          <Avatar total={total} avatar={avatar} />
+          <Avatar total={total} avatar={avatar} value={selected} />
           <PartList
             total={total}
             avatar={avatar}
+            selected={selected}
+            setSelected={setSelected}
             setAvatar={setAvatar}
             handleClick={handleClick}
+            handleSelected={handleSelected}
           />
         </div>
       </div>

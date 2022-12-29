@@ -1,18 +1,17 @@
 import React from "react";
 
-function Avatar({ avatar }) {
+function Avatar({ avatar, setAvatar, handleRandom }) {
   const keys = Object.keys(avatar);
   let imagePath = "";
   let zIndex = "";
+
   return (
     <>
       <div>
         <div className="avatar-wrapper">
           <div className="avatar">
             {keys.map((item) => {
-              // const avaArray = [...Array(avatar[`${item}`] + 1).keys()].slice(1);
               const avaValue = avatar[`${item}`];
-              const randomNum = Math.floor(Math.random() * avaValue) + 1;
               switch (item) {
                 case "body":
                   zIndex = 0;
@@ -47,7 +46,6 @@ function Avatar({ avatar }) {
                   zIndex = 1;
                   imagePath = `./character/${item}/`;
               }
-              const randomAva = `${imagePath}${randomNum}.png`;
               return (
                 <img
                   key={`${item}-${avaValue}`}
@@ -65,7 +63,12 @@ function Avatar({ avatar }) {
             })}
           </div>
           <div className="text-center">
-            <button className="random-button">Randomize!</button>
+            <button
+              className="random-button"
+              onClick={(avatar) => handleRandom(avatar)}
+            >
+              Randomize!
+            </button>
           </div>
         </div>
       </div>

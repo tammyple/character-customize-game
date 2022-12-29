@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 
-function PartList({ total, handleClick }) {
+function PartList({
+  total,
+  avatar,
+  selected,
+  setSelected,
+  handleClick,
+  handleSelected,
+}) {
   const keys = Object.keys(total);
-  console.log("keys", keys);
   let imagePath = "";
   let itemName = "";
   return (
@@ -36,14 +42,12 @@ function PartList({ total, handleClick }) {
                   return (
                     <div
                       key={`${item}-${image}`}
-                      className="clickable square"
-                      onClick={handleClick}
-                      // onClick={(e) =>
-                      //   settotal({
-                      //     ...total,
-                      //     [e.target.name]: e.target.value,
-                      //   })
-                      // }
+                      className={
+                        `${selected}` === `${item}-${image}`
+                          ? "clickable square selected"
+                          : "clickable square"
+                      }
+                      onClick={() => setSelected(`${item}-${image}`)}
                     >
                       <img
                         id={`${item}-${image}`}
@@ -54,6 +58,7 @@ function PartList({ total, handleClick }) {
                         height="60"
                         className="img-center"
                         style={{ top: "50%" }}
+                        onClick={handleClick}
                       />
                     </div>
                   );
