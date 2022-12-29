@@ -1,7 +1,7 @@
 import React from "react";
 
-function Avatar({ total, squares }) {
-  const keys = Object.keys(total);
+function Avatar({ avatar }) {
+  const keys = Object.keys(avatar);
   let imagePath = "";
   let zIndex = "";
   return (
@@ -10,9 +10,9 @@ function Avatar({ total, squares }) {
         <div className="avatar-wrapper">
           <div className="avatar">
             {keys.map((item) => {
-              // const avaArray = [...Array(total[`${item}`] + 1).keys()].slice(1);
-              const avaValue = total[`${item}`];
-              const randomAva = Math.floor(Math.random() * avaValue);
+              // const avaArray = [...Array(avatar[`${item}`] + 1).keys()].slice(1);
+              const avaValue = avatar[`${item}`];
+              const randomNum = Math.floor(Math.random() * avaValue) + 1;
               switch (item) {
                 case "body":
                   zIndex = 0;
@@ -47,9 +47,11 @@ function Avatar({ total, squares }) {
                   zIndex = 1;
                   imagePath = `./character/${item}/`;
               }
+              const randomAva = `${imagePath}${randomNum}.png`;
               return (
                 <img
-                  src={`${imagePath}${randomAva}.png`}
+                  key={`${item}-${avaValue}`}
+                  src={`${imagePath}${avaValue}.png`}
                   alt=""
                   width="260"
                   style={{

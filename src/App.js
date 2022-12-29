@@ -8,6 +8,7 @@ const total = {
   eyes: 17,
   hair: 73,
   mouths: 24,
+  noses: 1,
   eyebrows: 15,
   hats: 28,
   glasses: 17,
@@ -18,16 +19,26 @@ const total = {
 };
 
 function App() {
-  const [avatar, setAvatar] = useState(null);
-  const [squares, setSquares] = useState(null);
-  const [isSelected, setIsSelected] = useState(false);
-  const [activeSquare, setActiveSquare] = useState(null);
-  const [currentSelected, setCurrentSelected] = useState(null);
+  const [avatar, setAvatar] = useState({
+    body: 17,
+    eyes: 17,
+    hair: 73,
+    mouths: 24,
+    noses: 1,
+    eyebrows: 15,
+    hats: 28,
+    glasses: 17,
+    earrings: 32,
+    layer_1: 5,
+    layer_2: 5,
+    layer_3: 9,
+  });
+  // const [squares, setSquares] = useState(null);
+  // const [isSelected, setIsSelected] = useState(false);
 
   const handleClick = (e) => {
-    const newAvatar = e.target.src;
-    setAvatar(newAvatar);
-    setIsSelected(true);
+    let value = e.target.getAttribute("data-value");
+    setAvatar({ ...avatar, [e.target.name]: value });
   };
 
   // const handleSelect = (e) => {
@@ -49,11 +60,12 @@ function App() {
           <div className="divider"></div>
         </div>
         <div className="avatar-group">
-          <Avatar total={total} avatar={avatar} squares={squares} />
+          <Avatar total={total} avatar={avatar} />
           <PartList
             total={total}
+            avatar={avatar}
+            setAvatar={setAvatar}
             handleClick={handleClick}
-            isSelected={isSelected}
           />
         </div>
       </div>
