@@ -65,7 +65,7 @@ function Avatar({ avatar, setAvatar, handleRandom }) {
           <div className="text-center">
             <button
               className="random-button"
-              onClick={(avatar) => handleRandom(avatar)}
+              onClick={() => handleRandom(avatar)}
             >
               Randomize!
             </button>

@@ -44,13 +44,31 @@ function App() {
     setAvatar({ ...avatar, [e.target.name]: value });
   };
 
-  // const handleRandom = (avatar) => {
+  const handleRandom = () => {
+    let updatedValue = "";
+    const keys = Object.entries(total);
+    console.log("keys", keys[0][1]);
+    keys.forEach((item) => {
+      const avaValue = item[1];
+      console.log("avaValue", avaValue);
+      const randomNum = Math.floor(Math.random() * avaValue) + 1;
+      updatedValue = { [item[0]]: randomNum };
+      console.log("updatedValue", updatedValue);
+      console.log("randomNum", randomNum);
+      setAvatar({ ...avatar, ...updatedValue });
+      console.log("avatar", avatar);
+      return avatar;
+    });
+  };
+
+  // const handleRandom = () => {
   //   const keys = Object.keys(avatar);
   //   keys.forEach((item) => {
   //     const avaValue = avatar[`${item}`];
   //     const randomNum = Math.floor(Math.random() * avaValue) + 1;
   //     setAvatar({ ...avatar, [item]: randomNum });
-  //     console.log("item", item);
+  //     console.log("avatar", avatar);
+  //     return avatar;
   //   });
   // };
 
@@ -63,7 +81,12 @@ function App() {
           <div className="divider"></div>
         </div>
         <div className="avatar-group">
-          <Avatar total={total} avatar={avatar} value={selected} />
+          <Avatar
+            total={total}
+            avatar={avatar}
+            value={selected}
+            handleRandom={handleRandom}
+          />
           <PartList
             total={total}
             avatar={avatar}
