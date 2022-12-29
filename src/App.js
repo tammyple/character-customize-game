@@ -21,23 +21,13 @@ function App() {
   const [avatar, setAvatar] = useState(null);
   const [squares, setSquares] = useState(null);
   const [isSelected, setIsSelected] = useState(false);
-  const [activeSquare, setActiveSquare] = useState();
+  const [activeSquare, setActiveSquare] = useState(null);
+  const [currentSelected, setCurrentSelected] = useState(null);
 
   const handleClick = (e) => {
-    const newAvatar = e.target;
-    const newAvatarSrc = e.target.src;
-    setAvatar(newAvatarSrc);
+    const newAvatar = e.target.src;
+    setAvatar(newAvatar);
     setIsSelected(true);
-
-    // const selectedSquareId = e.target.id;
-    // const newActiveSquare = (itemId)
-    // activeSquare.id === selectedSquareId ? "" : "selected";
-    // setActiveSquare(newActiveSquare);
-
-    // console.log("selectedSquare", selectedSquareId);
-    // console.log("newAvatar", newAvatar);
-    // console.log("activeSquare", activeSquare);
-    // console.log("newActiveSquare", newActiveSquare);
   };
 
   // const handleSelect = (e) => {

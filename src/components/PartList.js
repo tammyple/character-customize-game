@@ -1,14 +1,5 @@
 import React, { useState } from "react";
 
-// function importAll(r) {
-//   return r.keys().map(r);
-// }
-
-// const bodyImages = importAll(
-//   require.context("./", false, /\.(png|jpe?g|svg)$/)
-// );
-// console.log(bodyImages);
-
 function PartList({
   isSelected,
   activeSquare,
