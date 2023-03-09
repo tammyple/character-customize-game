@@ -1,69 +1,30 @@
 import React from "react";
 
-function PartList({ total, selected, setSelected, handleClick }) {
-  const totalKeys = Object.keys(total);
-  let imagePath = "";
-  let itemName = "";
-  const timestamp = Date.now();
+function PartList({ total, path, set, selected }) {
+  let arr = [];
+  for (let i = 0; i < total; i++) {
+    arr.push(i + 1);
+  }
   return (
-    <>
-      <div key={`${timestamp}`} className="list-wrapper">
-        {totalKeys.map((item, index) => {
-          const imagesArray = [...Array(total[`${item}`] + 1).keys()].slice(1);
-          switch (item) {
-            case "glasses":
-            case "hats":
-            case "earrings":
-              imagePath = `./character/accessories/${item}/`;
-              itemName = `${item}`;
-              break;
-            case "layer_1":
-            case "layer_2":
-            case "layer_3":
-              imagePath = `./character/clothes/${item}/`;
-              itemName = `Clothes ${item}`;
-              break;
-            default:
-              imagePath = `./character/${item}/`;
-              itemName = `${item}`;
+    <div className="list">
+      {arr.map((item) => (
+        <div
+          key={path + item}
+          className={
+            selected === item ? "selected clickable square" : "clickable square"
           }
-          return (
-            <div key={`${item}-${index}-${timestamp}`} className="list-section">
-              <h2>{`${itemName}`.toUpperCase()}</h2>
-              <div className="list">
-                {imagesArray.map((image) => {
-                  return (
-                    <>
-                      <div
-                        key={`${item}-${image}-${timestamp}`}
-                        className={
-                          `${selected}` === `${item}-${image}`
-                            ? "clickable square selected"
-                            : "clickable square"
-                        }
-                        onClick={() => setSelected(`${item}-${image}`)}
-                      >
-                        <img
-                          id={`${item}-${image}`}
-                          name={`${item}`}
-                          data-value={`${image}`}
-                          src={`${imagePath}${image}.png`}
-                          alt=""
-                          height="60"
-                          className="img-center"
-                          style={{ top: "50%" }}
-                          onClick={handleClick}
-                        />
-                      </div>
-                    </>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </>
+          onClick={() => set(item)}
+        >
+          <img
+            src={`./character/${path}/${item}.png`}
+            className="img-center"
+            height="60"
+            style={{ top: "50%" }}
+            alt={path + item}
+          />
+        </div>
+      ))}
+    </div>
   );
 }
 

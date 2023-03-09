@@ -15,17 +15,21 @@ body {
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-image: url(https://img.freepik.com/free-vector/stylish-hexagonal-line-pattern-background_1017-19742.jpg?w=1060&t=st=1672039323~exp=1672039923~hmac=f46806507b471e976927b6f3ee72fadfa49549ffe2a22bf69ef437e3d9150ae0);
 }
 
 .App {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100vw;
   height: 100%;
-  align-items: center;
   margin: 0 auto;
   max-width: 1200px;
+}
+
+.bg-img {
+  background-image: url(http://www.gogladys.com/wp-content/uploads/2018/01/hip-square.png);
+  background-blend-mode: lighten;
 }
 
 .header {
@@ -53,31 +57,17 @@ body {
   text-shadow: 3px 3px #0baf94;
 }
 
-@media (max-width: 1150px) {
-  .avatar-group {
-    align-items: center;
-    flex-direction: column;
-    align-items: center;
-  }
+.gap-30 {
+  gap: 30px;
 }
 
 .avatar-group {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 5vw;
-}
-
-.gap-30 {
-  gap: 30px;
-}
-
-@media (max-width: 750px) {
-  .avatar-wrapper {
-    padding: 0;
-  }
 }
 
 .avatar-wrapper {
@@ -85,17 +75,51 @@ body {
   border: 15px solid #0baf94;
   border-radius: 40px;
   display: inline-block;
-  padding: 50px;
-  position: -webkit-sticky;
   position: sticky;
   padding: 20px;
-  top: calc(50% - 205px);
+  top: 20px;
 }
 
 .avatar {
   height: 280px;
   position: relative;
   width: 260px;
+}
+
+@media (max-width: 900px) {
+  .avatar-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .avatar-wrapper {
+    padding: 0px;
+    display: block;
+  }
+  /* .avatar-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    margin: 5vw;
+  }
+
+  .avatar-wrapper {
+    display: block;
+    padding: 20px;
+  } */
+  /* .avatar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .avatar-wrapper {
+    padding: 20px;
+    position: sticky;
+    margin-left: 10px;
+    margin-right: 10px;
+    top: calc(50% - 205px);
+  } */
 }
 
 .text-center {
@@ -143,7 +167,7 @@ body {
 }
 
 .list {
-  background-color: rgba(255, 166, 0, 0.4);
+  background-color: rgba(255, 166, 0, 0.6);
   border: 5px solid orange;
   border-radius: 15px;
   display: flex;
