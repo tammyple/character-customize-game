@@ -51,7 +51,7 @@ function App() {
 
   return (
     <>
-      <div className="App gap-30 bg-img">
+      <div className="App gap-30">
         <div className="header">
           <div className="title">CHARACTER</div>
           <div className="subtitle">CUSTOMIZATION</div>
